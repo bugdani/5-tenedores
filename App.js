@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Mi primera app!</Text>
+      <Text>Mi primera app! 11</Text>
     </View>
   );
 }
