@@ -1,10 +1,6 @@
 import React from "react";
-import { View, Text } from "react-native";
+import Navigation from "../navigations/Navigation";
 
 export default function Restaurant() {
-  return (
-    <View>
-      <Text>Restaurant</Text>
-    </View>
-  );
+  return Navigation;
 }
