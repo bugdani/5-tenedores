@@ -4,15 +4,40 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import Restaurants from "../screens/Restaurants";
 import Favorites from "../screens/Favorites";
-
+import Search from "../screens/Search";
+import TopRestaurants from "../screens/TopRestaurants";
+import Account from "../screens/Account";
 const Tab = createBottomTabNavigator();
 
 export default function Navigation() {
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen name="restaurants" component={Restaurants} />
-        <Tab.Screen name="favorites" component={Favorites} />
+        <Tab.Screen
+          name="restaurants"
+          component={Restaurants}
+          options={{ title: "Restaurantes" }}
+        />
+        <Tab.Screen
+          name="favorites"
+          component={Favorites}
+          options={{ title: "Favoritos" }}
+        />
+        <Tab.Screen
+          name="search"
+          component={Search}
+          options={{ title: "Busqueda" }}
+        />
+        <Tab.Screen
+          name="topRestaurants"
+          component={TopRestaurants}
+          options={{ title: "Top 10" }}
+        />
+        <Tab.Screen
+          name="account"
+          component={Account}
+          options={{ title: "Cuenta" }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
