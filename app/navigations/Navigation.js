@@ -4,8 +4,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import RestaurantsStack from "./RestaurantStack";
 import FavoritesStack from "./FavoritesStack";
-import Search from "../screens/Search";
-import TopRestaurants from "../screens/TopRestaurants";
+import Search from "./SearchStack";
+import TopRestaurants from "./TopRestaurantsStack";
 import Account from "../screens/Account";
 const Tab = createBottomTabNavigator();
 
