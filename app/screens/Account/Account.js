@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { View, Text } from "react-native";
 import * as firebase from "firebase";
+import Loading from "../../components/loading";
 import UserGuest from "./UserGuest";
 import UserLogued from "./UserLogued";
 
@@ -13,10 +13,6 @@ export default function Account() {
     });
   }, []);
 
-  //if (login === null) return <Text>Loading</Text>;
-  return (
-    <View>
-      <Text>Account</Text>
-    </View>
-  );
+  if (login === null) return <Loading isVisible={true} text={"Cargando..."} />;
+  return login ? <UserLogued /> : <UserGuest />;
 }

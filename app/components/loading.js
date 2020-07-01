@@ -5,7 +5,7 @@ export default function Loading(props) {
   const { isVisible, text } = props;
   return (
     <Overlay
-      isVisible={false}
+      isVisible={isVisible}
       windowBackgroundColor="rbga(0,0,0,0.5)"
       overlayBackgroundColor="transparent"
       overlayStyle={styles.overlay}
@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
   },
   view: {
     flex: 1,
-    alignItems: center,
-    justifyContent: center,
+    alignItems: "center",
+    justifyContent: "center",
   },
   text: {
     color: "#00a680",
