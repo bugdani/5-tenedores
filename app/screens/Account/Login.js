@@ -16,9 +16,25 @@ export default function Login() {
       ></Image>
       <View style={styles.viewContainer}>
         <Text>Login</Text>
-        <Text>Crear Cuenta</Text>
+        <CreateAccount />
       </View>
+      <Divider style={styles.divider} />
+      <Text>Social Login</Text>
     </ScrollView>
+  );
+}
+
+function CreateAccount() {
+  return (
+    <Text style={styles.textRegister}>
+      No tenes cuenta?{" "}
+      <Text
+        style={styles.btnRegister}
+        onPress={() => console.log("Presionaste boton")}
+      >
+        Crear cuenta
+      </Text>
+    </Text>
   );
 }
 
@@ -32,5 +48,18 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 150,
     marginTop: 20,
+  },
+  textRegister: {
+    marginTop: 15,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  btnRegister: {
+    color: "#00a680",
+    fontWeight: "bold",
+  },
+  divider: {
+    backgroundColor: "#00a680",
+    margin: 40,
   },
 });
