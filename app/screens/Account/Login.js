@@ -14,8 +14,9 @@ export default function Login() {
         resizeMode="contain"
         style={styles.image}
       ></Image>
-      <View>
-        <Text></Text>
+      <View style={styles.viewContainer}>
+        <Text>Login</Text>
+        <Text>Crear Cuenta</Text>
       </View>
     </ScrollView>
   );
@@ -23,6 +24,10 @@ export default function Login() {
 
 const styles = StyleSheet.create({
   scrollView: {},
+  viewContainer: {
+    marginRight: 40,
+    marginLeft: 40,
+  },
   image: {
     width: "100%",
     height: 150,
