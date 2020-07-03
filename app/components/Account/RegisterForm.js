@@ -22,6 +22,11 @@ export default function RegisterForm() {
         password={true}
         secureTextEntry={true}
       />
+      <Button
+        title="Unirse"
+        containerStyle={styles.buttonRegisterContent}
+        buttonStyle={styles.buttonRegister}
+      />
     </View>
   );
 }
@@ -36,5 +41,12 @@ const styles = StyleSheet.create({
   inputForm: {
     width: "100%",
     marginTop: 20,
+  },
+  buttonRegisterContent: {
+    marginTop: 25,
+    width: "95%",
+  },
+  buttonRegister: {
+    backgroundColor: "#00a680",
   },
 });
