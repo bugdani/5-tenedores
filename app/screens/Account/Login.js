@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { StyleSheet, View, ScrollView, Text, Image } from "react-native";
 import { Divider } from "react-native-elements";
 import {} from "../../../assets/img/5-tenedores-letras-icono-logo.png";
+import { useNavigation } from "@react-navigation/native";
 
 const Stack = createStackNavigator();
 
@@ -25,12 +26,13 @@ export default function Login() {
 }
 
 function CreateAccount() {
+  const navigation = useNavigation();
   return (
     <Text style={styles.textRegister}>
       No tenes cuenta?{" "}
       <Text
         style={styles.btnRegister}
-        onPress={() => console.log("Presionaste boton")}
+        onPress={() => navigation.navigate("register")}
       >
         Crear cuenta
       </Text>
