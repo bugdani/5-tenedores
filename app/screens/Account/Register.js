@@ -6,6 +6,8 @@ import Toast from "react-native-easy-toast";
 
 export default function Register() {
   const toastRef = useRef();
+  console.log(toastRef);
+
   return (
     <KeyboardAwareScrollView>
       <Image
@@ -14,9 +16,9 @@ export default function Register() {
         style={styles.image}
       />
       <View style={styles.viewForm}>
-        <RegisterForm />
+        <RegisterForm toastRef={toastRef} />
       </View>
-      <Toast />
+      <Toast ref={toastRef} position="center" opacity={0.9} />
     </KeyboardAwareScrollView>
   );
 }

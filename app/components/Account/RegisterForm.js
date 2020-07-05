@@ -5,7 +5,8 @@ import { Input, Icon, Button } from "react-native-elements";
 import { validateEmail } from "../../utils/validations";
 import { size, isEmpty } from "lodash";
 
-export default function RegisterForm() {
+export default function RegisterForm(props) {
+  const { toastRef } = props;
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordRepeat, setShowPasswordRepeat] = useState(false);
   const [formData, setFormData] = useState(defaultFormValue());
@@ -17,16 +18,15 @@ export default function RegisterForm() {
       isEmpty(formData.password) ||
       isEmpty(formData.repeatPassword)
     ) {
-      console.log(isEmpty(formData.email));
-      console.log("todos los campos estan vacios");
+      toastRef.current.show("Todos los campos son requeridos");
     } else if (!validateEmail(formData.email)) {
-      console.log("email incorrecto");
+      toastRef.current.show("email incorrecto");
     } else if (formData.password !== formData.repeatPassword) {
-      console.log("No son iguales las contrasenas");
+      toastRef.current.show("No son iguales las contrasenas");
     } else if (size(formData.password) < 6) {
-      console.log("contrasena debe tener 6 caracteres");
+      toastRef.current.show("contrasena debe tener 6 caracteres");
     } else {
-      console.log("todo ok");
+      toastRef.current.show("todo ok");
     }
   };
 
