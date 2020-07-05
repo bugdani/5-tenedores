@@ -3,6 +3,7 @@ import { StyleSheet } from "react-native";
 import { View, Text } from "react-native";
 import { Input, Icon, Button } from "react-native-elements";
 import { validateEmail } from "../../utils/validations";
+import { size, isEmpty } from "lodash";
 
 export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -10,7 +11,23 @@ export default function RegisterForm() {
   const [formData, setFormData] = useState(defaultFormValue());
 
   const onSubmit = () => {
-    console.log(validateEmail(formData.email));
+    console.log(formData);
+    if (
+      isEmpty(formData.email) ||
+      isEmpty(formData.password) ||
+      isEmpty(formData.repeatPassword)
+    ) {
+      console.log(isEmpty(formData.email));
+      console.log("todos los campos estan vacios");
+    } else if (!validateEmail(formData.email)) {
+      console.log("email incorrecto");
+    } else if (formData.password !== formData.repeatPassword) {
+      console.log("No son iguales las contrasenas");
+    } else if (size(formData.password) < 6) {
+      console.log("contrasena debe tener 6 caracteres");
+    } else {
+      console.log("todo ok");
+    }
   };
 
   const onChange = (e, type) => {
