@@ -4,6 +4,7 @@ import { View, Text } from "react-native";
 import { Input, Icon, Button } from "react-native-elements";
 import { validateEmail } from "../../utils/validations";
 import { size, isEmpty } from "lodash";
+import * as firebase from "firebase";
 
 export default function RegisterForm(props) {
   const { toastRef } = props;
@@ -12,7 +13,6 @@ export default function RegisterForm(props) {
   const [formData, setFormData] = useState(defaultFormValue());
 
   const onSubmit = () => {
-    console.log(formData);
     if (
       isEmpty(formData.email) ||
       isEmpty(formData.password) ||
@@ -26,7 +26,15 @@ export default function RegisterForm(props) {
     } else if (size(formData.password) < 6) {
       toastRef.current.show("contrasena debe tener 6 caracteres");
     } else {
-      toastRef.current.show("todo ok");
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(formData.email, formData.password)
+        .then((response) => {
+          toastRef.current.show("Te registraste correctamente!");
+        })
+        .catch((err) => {
+          toastRef.current.show(err);
+        });
     }
   };
 
