@@ -3,7 +3,8 @@ import { StyleSheet, View } from "react-native";
 import { Input, Icon, Button } from "react-native-elements";
 import { isEmpty } from "lodash";
 
-export default function LoginForm() {
+export default function LoginForm(props) {
+  const { toastRef } = props;
   const [showPassword, setshowPassword] = useState(true);
   const [formData, setFormData] = useState(defaultFormValue());
 
@@ -12,7 +13,9 @@ export default function LoginForm() {
   };
 
   const onSubmit = () => {
-    console.log(formData);
+    if (isEmpty(formData.email) || isEmpty(formData.password)) {
+      toastRef.current.show("Complete los campos");
+    }
   };
 
   return (
