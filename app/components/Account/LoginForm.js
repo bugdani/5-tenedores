@@ -15,6 +15,11 @@ export default function LoginForm() {
         password={true}
         secureTextEntry={true}
       />
+      <Button
+        title="Iniciar sesion"
+        containerStyle={styles.buttonForm}
+        buttonStyle={styles.buttonLogin}
+      />
     </View>
   );
 }
@@ -29,5 +34,12 @@ const styles = StyleSheet.create({
   inputForm: {
     width: "100%",
     marginTop: 20,
+  },
+  buttonForm: {
+    marginTop: 20,
+    width: "95%",
+  },
+  buttonLogin: {
+    backgroundColor: "#00a680",
   },
 });
