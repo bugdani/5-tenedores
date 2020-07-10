@@ -5,12 +5,14 @@ import { Input, Icon, Button } from "react-native-elements";
 import { validateEmail } from "../../utils/validations";
 import { size, isEmpty } from "lodash";
 import * as firebase from "firebase";
+import { useNavigation } from "@react-navigation/native";
 
 export default function RegisterForm(props) {
   const { toastRef } = props;
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordRepeat, setShowPasswordRepeat] = useState(false);
   const [formData, setFormData] = useState(defaultFormValue());
+  const navigation = useNavigation();
 
   const onSubmit = () => {
     if (
@@ -30,7 +32,7 @@ export default function RegisterForm(props) {
         .auth()
         .createUserWithEmailAndPassword(formData.email, formData.password)
         .then((response) => {
-          toastRef.current.show("Te registraste correctamente!");
+          navigation.navigate("account");
         })
         .catch((err) => {
           toastRef.current.show(err);
