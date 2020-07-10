@@ -4,6 +4,7 @@ import { StyleSheet, View, ScrollView, Text, Image } from "react-native";
 import { Divider } from "react-native-elements";
 import {} from "../../../assets/img/5-tenedores-letras-icono-logo.png";
 import { useNavigation } from "@react-navigation/native";
+import LoginForm from "../../components/Account/LoginForm";
 
 const Stack = createStackNavigator();
 
@@ -16,7 +17,7 @@ export default function Login() {
         style={styles.image}
       ></Image>
       <View style={styles.viewContainer}>
-        <Text>Login</Text>
+        <LoginForm />
         <CreateAccount />
       </View>
       <Divider style={styles.divider} />
