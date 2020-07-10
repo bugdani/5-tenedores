@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import { Input, Icon, Button } from "react-native-elements";
+import { isEmpty } from "lodash";
 
 export default function LoginForm() {
   const [showPassword, setshowPassword] = useState(true);
