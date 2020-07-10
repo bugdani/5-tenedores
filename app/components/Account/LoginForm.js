@@ -4,6 +4,12 @@ import { Input, Icon, Button } from "react-native-elements";
 
 export default function LoginForm() {
   const [showPassword, setshowPassword] = useState(true);
+  const [formData, setFormData] = useState(defaultFormValue());
+
+  const onSubmit = () => {
+    console.log(formData);
+  };
+
   return (
     <View style={styles.formContainer}>
       <Input
@@ -35,9 +41,17 @@ export default function LoginForm() {
         title="Iniciar sesion"
         containerStyle={styles.buttonForm}
         buttonStyle={styles.buttonLogin}
+        onPress={onSubmit}
       />
     </View>
   );
+}
+
+function defaultFormValue() {
+  return {
+    email: "",
+    password: "",
+  };
 }
 
 const styles = StyleSheet.create({
