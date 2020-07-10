@@ -6,6 +6,10 @@ export default function LoginForm() {
   const [showPassword, setshowPassword] = useState(true);
   const [formData, setFormData] = useState(defaultFormValue());
 
+  const onChange = (e, type) => {
+    setFormData({ ...formData, [type]: e.nativeEvent.text });
+  };
+
   const onSubmit = () => {
     console.log(formData);
   };
@@ -15,6 +19,7 @@ export default function LoginForm() {
       <Input
         placeholder="Correo electronico"
         containerStyle={styles.inputForm}
+        onChange={(e) => onChange(e, "email")}
         rightIcon={
           <Icon
             type="material-community"
@@ -28,6 +33,7 @@ export default function LoginForm() {
         containerStyle={styles.inputForm}
         password={true}
         secureTextEntry={showPassword ? true : false}
+        onChange={(e) => onChange(e, "password")}
         rightIcon={
           <Icon
             type="material-community"
