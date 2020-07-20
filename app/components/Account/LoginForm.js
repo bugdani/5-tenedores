@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import { Input, Icon, Button } from "react-native-elements";
+import Loading from "../loading";
+import { useNavigation } from "@react-navigation/native";
 import { isEmpty } from "lodash";
+import { validateEmail } from "../../utils/validations";
+import * as firebase from "firebase";
 
 export default function LoginForm(props) {
   const { toastRef } = props;
   const [showPassword, setshowPassword] = useState(true);
   const [formData, setFormData] = useState(defaultFormValue());
+  const [loading, setLoading] = useState(false);
+  const navigation = useNavigation();
 
   const onChange = (e, type) => {
     setFormData({ ...formData, [type]: e.nativeEvent.text });
@@ -15,6 +21,21 @@ export default function LoginForm(props) {
   const onSubmit = () => {
     if (isEmpty(formData.email) || isEmpty(formData.password)) {
       toastRef.current.show("Complete los campos");
+    } else if (!validateEmail(formData.email)) {
+      toastRef.current.show("el email es incorrecto");
+    } else {
+      setLoading(true);
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(formData.email, formData.password)
+        .then(() => {
+          setLoading(false);
+          navigation.navigate("account");
+        })
+        .catch((err) => {
+          setLoading(false);
+          console.log(err);
+        });
     }
   };
 
@@ -53,6 +74,7 @@ export default function LoginForm(props) {
         buttonStyle={styles.buttonLogin}
         onPress={onSubmit}
       />
+      <Loading isVisible={loading} text={"Creando cuenta..."} />
     </View>
   );
 }
