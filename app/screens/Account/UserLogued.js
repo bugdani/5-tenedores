@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { Input, Icon, Button } from "react-native-elements";
 import Toast from "react-native-easy-toast";
@@ -6,6 +6,8 @@ import * as firebase from "firebase";
 import Loading from "../../components/loading";
 
 export default function UserLogued() {
+  const [loading, setLoading] = useState(false);
+  const [loadingText, setLoadingText] = useState("");
   const toastRef = useRef();
   return (
     <View style={styles.viewUserInfo}>
@@ -18,6 +20,7 @@ export default function UserLogued() {
         onPress={() => firebase.auth().signOut()}
       />
       <Toast ref={toastRef} position="center" opacity={0.9} />
+      <Loading text={loadingText} isVisible={loading} />
     </View>
   );
 }
