@@ -9,10 +9,16 @@ export default function InfoUser(props) {
     <View style={styles.viewUserInfo}>
       <Avatar
         rounded
+        icon={{ name: "user", type: "font-awesome" }}
+        overlayContainerStyle={{ backgroundColor: "#717171" }}
         size="large"
-        showEditButton
+        editButton
         containerStyle={styles.userInfoAvatar}
       />
+      <View>
+        <Text style={styles.userDisplayName}>Daniel Velas</Text>
+        <Text>apu.dnaielvelsadsa@dsad.com</Text>
+      </View>
     </View>
   );
 }
@@ -28,5 +34,9 @@ const styles = StyleSheet.create({
   },
   userInfoAvatar: {
     marginRight: 20,
+  },
+  userDisplayName: {
+    fontWeight: "bold",
+    paddingBottom: 5,
   },
 });
