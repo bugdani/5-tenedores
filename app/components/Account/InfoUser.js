@@ -1,7 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { Avatar } from "react-native-elements";
-import AvatarDefault from "../../../assets/img/avatar-default.jpg";
 
 export default function InfoUser(props) {
   const {
