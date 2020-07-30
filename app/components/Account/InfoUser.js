@@ -6,6 +6,7 @@ export default function InfoUser(props) {
   const {
     userInfo: { photoURL, displayName, email },
   } = props;
+  console.log(props);
   return (
     <View style={styles.viewUserInfo}>
       <Avatar
@@ -22,8 +23,10 @@ export default function InfoUser(props) {
         }
       />
       <View>
-        <Text style={styles.userDisplayName}>Daniel Velas</Text>
-        <Text>apu.dnaielvelsadsa@dsad.com</Text>
+        <Text style={styles.userDisplayName}>
+          {displayName ? displayName : "Anonimo"}
+        </Text>
+        <Text>{email ? email : "Social Login"}</Text>
       </View>
     </View>
   );
