@@ -6,7 +6,11 @@ export default function InfoUser(props) {
   const {
     userInfo: { photoURL, displayName, email },
   } = props;
-  console.log(props);
+
+  const changeAvatar = () => {
+    console.log("change avatar");
+  };
+
   return (
     <View style={styles.viewUserInfo}>
       <Avatar
@@ -14,6 +18,7 @@ export default function InfoUser(props) {
         icon={{ name: "user", type: "font-awesome" }}
         overlayContainerStyle={{ backgroundColor: "#717171" }}
         size="large"
+        onPress={changeAvatar}
         editButton
         containerStyle={styles.userInfoAvatar}
         source={
